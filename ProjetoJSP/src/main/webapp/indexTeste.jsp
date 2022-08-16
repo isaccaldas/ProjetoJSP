@@ -8,13 +8,20 @@
 </head>
 <body>
 
-oi
-
-<% System.out.print("oi, usando JSP33");
+<% //System.out.print("oi, usando JSP33");
 		
 		// apresenta um saída no navegador.
-		out.print("teste");
+		//out.print("teste");
 %>
+
+<form action="receberNome.jsp">
+
+	Nome:<input name="nome">
+	Idade:<input name="idade">
+	<input type="submit" value="Enviar">
+</form>
+	
+	
 
 </body>
 </html>
