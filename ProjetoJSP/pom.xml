@@ -6,6 +6,7 @@
   <packaging>war</packaging>
   <name>ProjetoJSP</name>
   <build>
+  
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -19,5 +20,10 @@
         <version>3.2.3</version>
       </plugin>
     </plugins>
+    
   </build>
+  
+  
+
+  
 </project>
