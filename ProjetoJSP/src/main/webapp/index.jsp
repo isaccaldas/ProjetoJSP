@@ -9,5 +9,12 @@
 <body>
 
 oi
+
+<% System.out.print("oi, usando JSP33");
+		
+		// apresenta um saída no navegador.
+		out.print("teste");
+%>
+
 </body>
 </html>
