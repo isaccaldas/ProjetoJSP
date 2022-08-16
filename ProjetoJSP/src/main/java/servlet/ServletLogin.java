@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class ServletLogin
+ * As Servlets são os controllers ex: ServletLoginController
  */
 @WebServlet("/ServletLogin") // Mapeamento de url que vem da tela
 public class ServletLogin extends HttpServlet {
@@ -26,8 +27,13 @@ public class ServletLogin extends HttpServlet {
     //Recebe os dados enviados por um formulário
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println(request.getParameter("_nome"));
-		System.out.println(request.getParameter("_idade"));
+		//Recupera os parâmetros nome e idade recuperados da tela
+		//System.out.println(request.getParameter("_login"));
+		//System.out.println(request.getParameter("_senha"));
+		
+		String login = request.getParameter("_login");
+		String senha = request.getParameter("_senha");
+		
 	}
 
 }

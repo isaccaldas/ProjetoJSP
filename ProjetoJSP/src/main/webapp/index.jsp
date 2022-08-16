@@ -9,10 +9,10 @@
 <body>
 	<form action="ServletLogin"  method="post">
 
-		Nome:<input name="_nome">
+		Nome:<input name="_nome" type="text">
 		<br>
 		<br>
-		Idade:<input name="_idade"> 
+		Idade:<input name="_senha" type="password"> 
 		<br>
 		<input
 			type="submit" value="Enviar">
