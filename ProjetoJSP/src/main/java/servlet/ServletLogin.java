@@ -16,12 +16,12 @@ import model.ModelLogin;
  * Servlet implementation class ServletLogin As Servlets são os controllers ex:
  * ServletLoginController
  */
-@WebServlet(urlPatterns = {"/principal/ServletLogin", "/ServletLogin"} ) // Mapeamento de url que vem da tela
+@WebServlet(urlPatterns = { "/principal/ServletLogin", "/ServletLogin" }) // Mapeamento de url que vem da tela
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private DAOLoginRepository daoLoginRepository = new DAOLoginRepository();
-	
+
 	public ServletLogin() {
 		super();
 	}
@@ -36,60 +36,70 @@ public class ServletLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// Recupera os parâmetros nome e idade recuperados da tela
-		// System.out.println(request.getParameter("_login"));
-		// System.out.println(request.getParameter("_senha"));
+		try {
+			// Recupera os parâmetros nome e idade recuperados da tela
+			// System.out.println(request.getParameter("_login"));
+			// System.out.println(request.getParameter("_senha"));
 
-		String login = request.getParameter("_login");
-		String senha = request.getParameter("_senha");
-		String url = request.getParameter("url");
+			String login = request.getParameter("_login");
+			String senha = request.getParameter("_senha");
+			String url = request.getParameter("url");
 
-		// verifica se o login e senha possuem valores
-		if (login != null && !login.isEmpty() && senha != null && !senha.isEmpty()) {
+			// verifica se o login e senha possuem valores
+			if (login != null && !login.isEmpty() && senha != null && !senha.isEmpty()) {
 
-			// Passando os parâmetros para o objeto
-			ModelLogin mLogin = new ModelLogin();
-			mLogin.setLogin(login);
-			mLogin.setSenha(senha);
+				// Passando os parâmetros para o objeto
+				ModelLogin mLogin = new ModelLogin();
+				mLogin.setLogin(login);
+				mLogin.setSenha(senha);
 
-			try {
-				if (daoLoginRepository.validarLogin(mLogin)) {
-					request.getSession().setAttribute("usuario", mLogin.getLogin());
-	
-					if (url == null || url.equals("null")) {
-						url = "principal/principal.jsp";
-					} 
-					RequestDispatcher r = request.getRequestDispatcher(url);
-					r.forward(request, response);
+				try {
+					if (daoLoginRepository.validarLogin(mLogin)) {
+						request.getSession().setAttribute("usuario", mLogin.getLogin());
 
-				} else {
-					// redireciona para a página de index
-					RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
-					// Informa uma mensagem ao usuário
-					request.setAttribute("msg", "Informe o login e a senha corretamente!.");
-					redirecionar.forward(request, response);
+						if (url == null || url.equals("null")) {
+							url = "principal/principal.jsp";
+						}
+						RequestDispatcher r = request.getRequestDispatcher(url);
+						r.forward(request, response);
+
+					} else {
+						// redireciona para a página de index
+						RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+						// Informa uma mensagem ao usuário
+						request.setAttribute("msg", "Informe o login e a senha corretamente!.");
+						redirecionar.forward(request, response);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ServletException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ServletException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+
+			} // fim if
+
+			else {
+				// redireciona para a página de index
+				RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+				// Informa uma mensagem ao usuário
+				request.setAttribute("msg", "Informe o login e a senha corretamente!.");
+				redirecionar.forward(request, response);
 			}
 
-		}
-
-		else {
+		} catch (Exception e) {
 			// redireciona para a página de index
-			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher redirecionar = request.getRequestDispatcher("erro.jsp");
 			// Informa uma mensagem ao usuário
-			request.setAttribute("msg", "Informe o login e a senha corretamente!.");
+			request.setAttribute("msg", e.getMessage());
 			redirecionar.forward(request, response);
+			e.printStackTrace();
 		}
 
-	}
+	}// fim doPost
 
 }

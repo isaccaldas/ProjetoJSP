@@ -19,30 +19,30 @@ import jakarta.servlet.http.HttpSession;
 /**
  * Filtra toda requisiçao e resposta da aplicação
  */
-@WebFilter(urlPatterns = {"/principal/*"}) //Intercepta todas as requisições que vierem do projeto ou mapeamento.
+@WebFilter(urlPatterns = { "/principal/*" }) // Intercepta todas as requisições que vierem do projeto ou mapeamento.
 public class FilterAutenticacao implements Filter {
 
 	private static Connection conexao;
-   
-    public FilterAutenticacao() {
-    
-    }
 
-    //Encerra os processos quando o servido é parado
-  //Ex. encerra a conexao com o BD.
-    public void destroy() {
+	public FilterAutenticacao() {
 
-    	try {
-    		//encerra a conexao com o BD.
+	}
+
+	// Encerra os processos quando o servido é parado
+	// Ex. encerra a conexao com o BD.
+	public void destroy() {
+
+		try {
+			// encerra a conexao com o BD.
 			conexao.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    	
+
 	}
 
-   //Intercepta as requisições e das respostas no sistema.
-    //tudo que fizer no sistema passa por aqui.
+	// Intercepta as requisições e das respostas no sistema.
+	// tudo que fizer no sistema passa por aqui.
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
@@ -70,11 +70,17 @@ public class FilterAutenticacao implements Filter {
 					// pass the request along the filter chain
 				chain.doFilter(request, response);
 			}
-			
-			conexao.commit(); 
-			
+
+			conexao.commit();
+
 		} catch (Exception e) {
 			e.printStackTrace();
+			// redireciona para a página de index
+			RequestDispatcher redirecionar = request.getRequestDispatcher("erro.jsp");
+			// Informa uma mensagem ao usuário
+			request.setAttribute("msg", e.getMessage());
+			redirecionar.forward(request, response);
+
 			try {
 				conexao.rollback();
 			} catch (SQLException e1) {
@@ -84,14 +90,15 @@ public class FilterAutenticacao implements Filter {
 
 	}
 
-   // executado quando inicia o sistema. Inicia os processos por recursos quando o servidor sobe o projeto.
-	//Ex. inicia a conexao com o BD.
+	// executado quando inicia o sistema. Inicia os processos por recursos quando o
+	// servidor sobe o projeto.
+	// Ex. inicia a conexao com o BD.
 	public void init(FilterConfig fConfig) throws ServletException {
-			
-			//inicia a conexao com o BD
-			conexao = SingleConnectionBD.getConexao();
-			System.out.println("entrou");
-		
+
+		// inicia a conexao com o BD
+		conexao = SingleConnectionBD.getConexao();
+		System.out.println("entrou");
+
 	}
 
 }
