@@ -8,14 +8,24 @@
 </head>
 <body>
 	<form action="ServletLogin"  method="post">
-
-		Nome:<input name="_nome" type="text">
-		<br>
-		<br>
-		Idade:<input name="_senha" type="password"> 
-		<br>
-		<input
-			type="submit" value="Enviar">
+		<table>
+			<tr>
+				<td><label>Nome:</label> </td>
+				<td><input name="_nome" type="text"></td>
+			</tr>
+			
+			<tr>
+				<td> <label>Idade:</label></td>
+				<td><input name="_senha" type="password"> </td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Enviar"></td>
+			</tr>
+		</table>
+	
+		<h4>${msg} </h4>
 	</form>
 
 </body>

@@ -1,11 +1,14 @@
 package servlet;
 
 import java.io.IOException;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.ModelLogin;
 
 /**
  * Servlet implementation class ServletLogin
@@ -34,6 +37,23 @@ public class ServletLogin extends HttpServlet {
 		String login = request.getParameter("_login");
 		String senha = request.getParameter("_senha");
 		
-	}
+		//verifica se o login e senha possuem valores
+		if(login != null && !login.isEmpty() && senha != null && !senha.isEmpty() ) {
+			
+			//Passando os parâmetros para o objeto
+			ModelLogin mLogin = new ModelLogin();
+			mLogin.setLogin(login);
+			mLogin.setSenha(senha);	
+		
+		}else {
+			//redireciona para a página de index
+			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp"); 
+			//Informa uma mensagem ao usuário
+			request.setAttribute("msg","Informe o login e a senha corretamente!." );
+			redirecionar.forward(request, response);
+		}
+		
+		
+			}
 
 }
