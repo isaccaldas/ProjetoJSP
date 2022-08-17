@@ -10,18 +10,18 @@
 	<form action="ServletLogin"  method="post">
 		<table>
 			<tr>
-				<td><label>Nome:</label> </td>
-				<td><input name="_nome" type="text"></td>
+				<td><label>Login:</label> </td>
+				<td><input name="_login" type="text"></td>
 			</tr>
 			
 			<tr>
-				<td> <label>Idade:</label></td>
+				<td> <label>Senha:</label></td>
 				<td><input name="_senha" type="password"> </td>
 			</tr>
 			
 			<tr>
 				<td></td>
-				<td><input type="submit" value="Enviar"></td>
+				<td><input type="submit" value="Logar"></td>
 			</tr>
 		</table>
 	
