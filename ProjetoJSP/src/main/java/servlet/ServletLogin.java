@@ -1,7 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import dao.DAOLoginRepository;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,6 +20,8 @@ import model.ModelLogin;
 public class ServletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private DAOLoginRepository daoLoginRepository = new DAOLoginRepository();
+	
 	public ServletLogin() {
 		super();
 	}
@@ -48,24 +52,32 @@ public class ServletLogin extends HttpServlet {
 			mLogin.setLogin(login);
 			mLogin.setSenha(senha);
 
-			// simula que a senha e login ok
-			if (mLogin.getLogin().equalsIgnoreCase("isac") && mLogin.getSenha().equalsIgnoreCase("123")) {
-				request.getSession().setAttribute("usuario", mLogin.getLogin());
-				// RequestDispatcher r =
-				// request.getRequestDispatcher("principal/principal.jsp");
+			try {
+				if (daoLoginRepository.validarLogin(mLogin)) {
+					request.getSession().setAttribute("usuario", mLogin.getLogin());
+	
+					if (url == null || url.equals("null")) {
+						url = "principal/principal.jsp";
+					} 
+					RequestDispatcher r = request.getRequestDispatcher(url);
+					r.forward(request, response);
 
-				if (url == null || url.equals("null")) {
-					url = "principal/principal.jsp";
-				} 
-				RequestDispatcher r = request.getRequestDispatcher(url);
-				r.forward(request, response);
-
-			} else {
-				// redireciona para a página de index
-				RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
-				// Informa uma mensagem ao usuário
-				request.setAttribute("msg", "Informe o login e a senha corretamente!.");
-				redirecionar.forward(request, response);
+				} else {
+					// redireciona para a página de index
+					RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+					// Informa uma mensagem ao usuário
+					request.setAttribute("msg", "Informe o login e a senha corretamente!.");
+					redirecionar.forward(request, response);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 
 		}
