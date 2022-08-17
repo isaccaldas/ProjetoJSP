@@ -1,0 +1,32 @@
+- Database: "bdJSP"
+
+-- DROP DATABASE "bdJSP";
+
+CREATE DATABASE "bdJSP"
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'Portuguese_Brazil.1252'
+       LC_CTYPE = 'Portuguese_Brazil.1252'
+       CONNECTION LIMIT = -1;
+------------------------------------------------------------------------
+-- Table: public."usuario-login"
+
+-- DROP TABLE public."usuario-login";
+
+CREATE TABLE public."usuario-login"
+(
+  login character varying(200),
+  senha character varying(200),
+  CONSTRAINT login_unique UNIQUE (login)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public."usuario-login"
+  OWNER TO postgres;
+----------------------------------------------------------------------
+
+INSERT INTO public."usuario-login"(
+            login, senha)
+    VALUES ('isac', '123');
