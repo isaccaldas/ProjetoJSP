@@ -37,7 +37,12 @@ public class ServletLogin extends HttpServlet {
 			request.getSession().invalidate(); //Invalida a sessao para realizar o logout
 			RequestDispatcher r = request.getRequestDispatcher("index.jsp");
 			r.forward(request, response);
-
+		}
+		else if (acao != null  &&  !acao.isEmpty() && acao.equalsIgnoreCase("usuario")) {
+				
+				RequestDispatcher rUser = request.getRequestDispatcher("principal/usuario.jsp");
+				rUser.forward(request, response);
+			
 		}else {
 			doPost(request,response);
 		}
