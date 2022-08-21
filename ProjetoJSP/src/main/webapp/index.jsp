@@ -66,9 +66,11 @@
                             </div>
                         </form>
                         <!-- end of form -->
+                        <!-- Ajustar depois a mensagem 
                         <div class="alert alert-danger" role="alert">
   							<h6>${msg} </h6>
 							</div>
+							-->
                 </div>
                 <!-- end of col-sm-12 -->
             </div>
