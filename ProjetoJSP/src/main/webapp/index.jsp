@@ -21,7 +21,7 @@
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
                      <input type="hidden" value="<%= request.getParameter("url") %>"  name="url"> <!-- Captura a url do browser -->
-                        <form action="ServletLogin"  method="post" class="md-float-material form-material">
+                        <form action="<%=request.getContextPath() %>/ServletLogin"  method="post" class="md-float-material form-material">
                             <div class="text-center">
                                 <img src="assets/images/logo.png" alt="logo.png">
                             </div>
