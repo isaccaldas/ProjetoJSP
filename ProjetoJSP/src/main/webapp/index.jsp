@@ -6,7 +6,7 @@
 <html lang="en">
 
 <head>
-    <title>Mega Able bootstrap admin template by codedthemes </title>
+    <title>Projeto JSP</title>
     <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 10]>
@@ -142,20 +142,14 @@
                                             <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Entrar</button>
                                         </div>
                                     </div>
-                                    <hr/>
-                                    <div class="row">
-                                        <div class="col-md-10">
-                                            <p class="text-inverse text-left m-b-0">Thank you.</p>
-                                            <p class="text-inverse text-left"><a href="index.html"><b>Back to website</b></a></p>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <img src="assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </form>
                         <!-- end of form -->
+                        <div class="alert alert-danger" role="alert">
+  							<h6>${msg} </h6>
+							</div>
                 </div>
                 <!-- end of col-sm-12 -->
             </div>
