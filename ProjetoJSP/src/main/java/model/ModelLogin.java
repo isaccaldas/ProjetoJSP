@@ -16,8 +16,17 @@ public class ModelLogin implements Serializable {
 	public Long getId() {
 		return id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(String id) {
+		
+		if(id != null && !id.isEmpty()) {
+			
+			this.id = Long.parseLong(id);
+			
+		}
+		else {	
+			this.id = null;
+		}
+		
 	}
 	
 	
