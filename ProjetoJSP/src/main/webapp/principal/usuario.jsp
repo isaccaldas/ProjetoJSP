@@ -39,46 +39,37 @@
                                          
                                 		 <div class="card">
                                                     <div class="card-header">
-                                                        <h5>Material Form Inputs</h5>
+                                                        <h5>Cadastro de usuário</h5>
                                                         <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
                                                     </div>
                                                     <div class="card-block">
-                                                        <form class="form-material">
-                                                            <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="">
+                                                        <form class="form-material" action="<%=request.getContextPath()%>/ServletUsuarioController" method="post">
+                                                        	
+                                                              <div class="form-group form-default">
+                                                                <input type="text" id="id" name="id" class="form-control" readonly="readonly">
                                                                 <span class="form-bar"></span>
-                                                                <label class="float-label">Username</label>
+                                                                <label class="float-label">ID</label>
                                                             </div>
-                                                            <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="">
+                                                             <div class="form-group form-default">
+                                                                <input type="text" id="nome"  name="nome" class="form-control" required="required">
+                                                                <span class="form-bar"></span>
+                                                                <label class="float-label">Nome</label>
+                                                            </div>
+                                                          <div class="form-group form-default">
+                                                                <input type="email" id="email" name="email" class="form-control" required="required" autocomplete="off">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Email (exa@gmail.com)</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="password" name="footer-email" class="form-control" required="">
+                                                                <input type="password" id ="senha" name="senha" class="form-control" required="required" autocomplete="off">
                                                                 <span class="form-bar"></span>
-                                                                <label class="float-label">Password</label>
+                                                                <label class="float-label">Senha</label>
                                                             </div>
-                                                            <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" value="My value">
-                                                                <span class="form-bar"></span>
-                                                                <label class="float-label">Predefine value</label>
-                                                            </div>
-                                                            <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" disabled>
-                                                                <span class="form-bar"></span>
-                                                                <label class="float-label">Disabled</label>
-                                                            </div>
-                                                            <div class="form-group form-default">
-                                                                <input type="text" name="footer-email" class="form-control" required="" maxlength="6">
-                                                                <span class="form-bar"></span>
-                                                                <label class="float-label">Max length 6 char</label>
-                                                            </div>
-                                                            <div class="form-group form-default">
-                                                                <textarea class="form-control" required=""></textarea>
-                                                                <span class="form-bar"></span>
-                                                                <label class="float-label">Text area Input</label>
-                                                            </div>
+                                                            
+                                                            <button class="btn waves-effect waves-light btn-primary btn-square">Cadastrar</button>
+                                                            <button class="btn waves-effect waves-light btn-success btn-square">Editar</button>
+            												<button class="btn waves-effect waves-light btn-info btn-square">Excluir</button>
+                                                        
                                                         </form>
                                                     </div>
                                                 </div> 
