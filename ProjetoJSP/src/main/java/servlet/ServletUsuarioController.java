@@ -31,22 +31,30 @@ public class ServletUsuarioController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		//recupera as informações da página
 		String id = request.getParameter("id");
 		String nome = request.getParameter("nome");
 		String email = request.getParameter("email");
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		
+		//Instancio o objeto para fazer a injeção dos dados
 		ModelLogin usuario = new ModelLogin();
 		
+		//Injeta os dados da tela no objeto
 		usuario.setId(id);
 		usuario.setNome(nome);;
 		usuario.setEmail(email);
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
 		
-		RequestDispatcher redireciona = request.getRequestDispatcher("principal/usuario.jsp");
-		redireciona.forward(request, response);
+		request.setAttribute("Usuario", usuario);
+		
+		request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+		
+	
+		
+		
 	
 	}
 

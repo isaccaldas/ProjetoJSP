@@ -46,27 +46,27 @@
                                                         <form class="form-material" action="<%=request.getContextPath()%>/ServletUsuarioController" method="post">
                                                         	
                                                               <div class="form-group form-default">
-                                                                <input type="text" id="id" name="id" class="form-control"  readonly="readonly">
+                                                                <input type="text" id="id" name="id" class="form-control"  readonly="readonly" value="${Usuario.id}">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">ID</label>
                                                             </div>
                                                              <div class="form-group form-default">
-                                                                <input type="text" id="nome"  name="nome" class="form-control" required="required">
+                                                                <input type="text" id="nome"  name="nome" class="form-control" required="required" value="${Usuario.nome}">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Nome</label>
                                                             </div>
                                                           <div class="form-group form-default">
-                                                                <input type="email" id="email" name="email" class="form-control" required="required" autocomplete="off">
+                                                                <input type="email" id="email" name="email" class="form-control" required="required" autocomplete="off" value="${Usuario.email}">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Email (exa@gmail.com)</label>
                                                             </div>
                                                               <div class="form-group form-default">
-                                                                <input type="text" id="login"  name="login" class="form-control" required="required">
+                                                                <input type="text" id="login"  name="login" class="form-control" required="required" value="${Usuario.login}">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Login</label>
                                                             </div>
                                                             <div class="form-group form-default">
-                                                                <input type="password" id ="senha" name="senha" class="form-control" required="required" autocomplete="off">
+                                                                <input type="password" id ="senha" name="senha" class="form-control" required="required" autocomplete="off" value="${Usuario.senha}">
                                                                 <span class="form-bar"></span>
                                                                 <label class="float-label">Senha</label>
                                                             </div>

@@ -30,3 +30,22 @@ ALTER TABLE public."usuario-login"
 INSERT INTO public."usuario-login"(
             login, senha)
     VALUES ('isac', '123');
+
+    ---------------------------------------------------------------------
+    -- Column: id
+
+-- ALTER TABLE public.usuario DROP COLUMN id;
+
+ALTER TABLE public.usuario ADD COLUMN id integer;
+ALTER TABLE public.usuario ALTER COLUMN id SET NOT NULL;
+ALTER TABLE public.usuario ALTER COLUMN id SET DEFAULT nextval('usuario_id_seq'::regclass);
+----------------------------------------------------------------------------
+ALTER TABLE public.usuario ADD COLUMN nome character varying(200);
+alter table usuario add email character varying(200);
+update usuario set nome = 'Isac';
+update usuario set email = 'isac@gmail.com';
+ALTER TABLE usuario ALTER COLUMN nome SET NOT NULL;
+ALTER TABLE usuario ALTER COLUMN email SET NOT NULL;
+
+    
+    
