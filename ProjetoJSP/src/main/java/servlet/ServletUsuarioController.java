@@ -52,7 +52,7 @@ public class ServletUsuarioController extends HttpServlet {
 		usuario.setSenha(senha);
 		
 		try {
-			daoUsuarioRepository.incluirUsuario(usuario);
+			usuario = daoUsuarioRepository.incluirUsuario(usuario);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,10 +62,6 @@ public class ServletUsuarioController extends HttpServlet {
 		request.setAttribute("Usuario", usuario);
 		
 		request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
-		
-	
-		
-		
 	
 	}
 
