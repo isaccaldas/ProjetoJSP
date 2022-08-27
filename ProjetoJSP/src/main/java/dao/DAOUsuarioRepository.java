@@ -17,6 +17,7 @@ public class DAOUsuarioRepository {
 		conexao = SingleConnectionBD.getConexao();
 	}
 	
+	//método para cadastrar um usuário no sistema
 	public ModelLogin incluirUsuario(ModelLogin usuario) throws SQLException {
 		
 		String sql = "INSERT INTO public.usuario(login, senha, nome, email) VALUES ( ?, ?, ?, ?)";
@@ -31,11 +32,11 @@ public class DAOUsuarioRepository {
 		statement.execute();
 		conexao.commit();
 		
-		return this.consultarUsuario(usuario.getLogin());
-	}
+		return this.consultarUsuarioporLogin(usuario.getLogin());
+	}// fim incluirUsuario
 	
-	
-	public ModelLogin consultarUsuario(String login) throws SQLException {
+	// Método para consultar um usuário a partir de um determinado login
+	public ModelLogin consultarUsuarioporLogin(String login) throws SQLException {
 		
 		var usuario = new ModelLogin();
 		
@@ -57,6 +58,22 @@ public class DAOUsuarioRepository {
 		
 		return usuario;
 		
-	}
+	}//consultarUsuarioporLogin
 	
-}
+	//Método para validar se um login existe
+	public boolean validarLoginExistente(String login) throws SQLException {
+		
+		//existe é um resultado booleano.
+		String sql = "SELECT COUNT(1)>0 AS existe FROM public.usuario WHERE UPPER(LOGIN) = UPPER('"+login+"');";
+		
+		PreparedStatement statement = conexao.prepareStatement(sql);
+		
+		ResultSet resultado = statement.executeQuery();
+		
+		 resultado.next() ;
+			 return resultado.getBoolean("existe");
+	}//fim validarLoginExistente
+	
+	
+	
+}// fim da classe

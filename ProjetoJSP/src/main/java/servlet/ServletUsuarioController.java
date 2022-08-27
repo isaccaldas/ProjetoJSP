@@ -34,6 +34,9 @@ public class ServletUsuarioController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		
+		String mensagem = "operação realizada com sucesso!" ;
+		
 		//recupera as informações da página
 		String id = request.getParameter("id");
 		String nome = request.getParameter("nome");
@@ -52,13 +55,21 @@ public class ServletUsuarioController extends HttpServlet {
 		usuario.setSenha(senha);
 		
 		try {
-			usuario = daoUsuarioRepository.incluirUsuario(usuario);
+			
+			if(daoUsuarioRepository.validarLoginExistente(usuario.getLogin()) && usuario.getId() == null ){
+				
+				mensagem = "Já existe usuário cadastrado com esse login. Por favor informe outro.";
+			}
+			else {
+				usuario = daoUsuarioRepository.incluirUsuario(usuario);
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("msg", "operação realizada com sucesso!" );
+		request.setAttribute("msg", mensagem);
 		request.setAttribute("Usuario", usuario);
 		
 		request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
