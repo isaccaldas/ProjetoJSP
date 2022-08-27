@@ -2,6 +2,27 @@
 
 -- DROP DATABASE "bdJSP";
 
+-- Table: public.usuario
+
+-- DROP TABLE public.usuario;
+
+CREATE TABLE public.usuario
+(
+  login character varying(200) NOT NULL,
+  senha character varying(200) NOT NULL,
+  id integer NOT NULL DEFAULT nextval('usuario_id_seq'::regclass),
+  nome character varying(200) NOT NULL,
+  email character varying(200) NOT NULL,
+  CONSTRAINT usuario_pkey PRIMARY KEY (id),
+  CONSTRAINT login_unique UNIQUE (login)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.usuario
+  OWNER TO postgres;
+
+---------------------------------------------------------------------------
 CREATE DATABASE "bdJSP"
   WITH OWNER = postgres
        ENCODING = 'UTF8'
@@ -46,6 +67,10 @@ update usuario set nome = 'Isac';
 update usuario set email = 'isac@gmail.com';
 ALTER TABLE usuario ALTER COLUMN nome SET NOT NULL;
 ALTER TABLE usuario ALTER COLUMN email SET NOT NULL;
+ALTER TABLE usuario ALTER COLUMN login SET NOT NULL;
+ALTER TABLE usuario ALTER COLUMN senha SET NOT NULL;
+-------------------------------------------------------------------------------
+
 
     
     

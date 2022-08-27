@@ -1,7 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import dao.DAOUsuarioRepository;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
@@ -17,7 +19,8 @@ import model.ModelLogin;
 public class ServletUsuarioController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
+	private DAOUsuarioRepository daoUsuarioRepository = new DAOUsuarioRepository();
+	
     public ServletUsuarioController() {
      
     }
@@ -48,6 +51,14 @@ public class ServletUsuarioController extends HttpServlet {
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
 		
+		try {
+			daoUsuarioRepository.incluirUsuario(usuario);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("msg", "operação realizada com sucesso!" );
 		request.setAttribute("Usuario", usuario);
 		
 		request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);

@@ -71,14 +71,16 @@
                                                                 <label class="float-label">Senha</label>
                                                             </div>
                                                             
-                                                            <button class="btn waves-effect waves-light btn-primary btn-square">Cadastrar</button>
+                                                            <button  type="submit" class="btn waves-effect waves-light btn-primary btn-square">Cadastrar</button>
                                                             <button class="btn waves-effect waves-light btn-success btn-square">Editar</button>
             												<button class="btn waves-effect waves-light btn-info btn-square">Excluir</button>
                                                         
                                                         </form>
                                                     </div>
                                                 </div> 
-                                        
+                                        		<div class="alert alert-danger" role="alert">
+  													<h6>${msg} </h6>
+											</div>
                                     </div>
                                     <!-- Page-body end -->
                                 </div>
