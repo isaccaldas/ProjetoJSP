@@ -43,7 +43,7 @@
                                                         <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
                                                     </div>
                                                     <div class="card-block">
-                                                        <form class="form-material" action="<%=request.getContextPath()%>/ServletUsuarioController" method="post">
+                                                        <form id="formUser" class="form-material" action="<%=request.getContextPath()%>/ServletUsuarioController" method="post">
                                                         	
                                                               <div class="form-group form-default">
                                                                 <input type="text" id="id" name="id" class="form-control"  readonly="readonly" value="${Usuario.id}">
@@ -71,8 +71,8 @@
                                                                 <label class="float-label">Senha</label>
                                                             </div>
                                                             
-                                                            <button  type="submit" class="btn waves-effect waves-light btn-primary btn-square">Cadastrar</button>
-                                                            <button class="btn waves-effect waves-light btn-success btn-square">Editar</button>
+                                                            <button   type ="button" class="btn waves-effect waves-light btn-primary btn-square" onclick="limparForm();">Novo</button>
+                                                            <button  type="submit" class="btn waves-effect waves-light btn-success btn-square">Salvar</button>
             												<button class="btn waves-effect waves-light btn-info btn-square">Excluir</button>
                                                         
                                                         </form>
@@ -95,6 +95,9 @@
 
     
   <jsp:include page="javascript.jsp"></jsp:include>
-</body>
+  
+ <script type="text/javascript" src="script.js"></script>
+<
+/body>
 
 </html>

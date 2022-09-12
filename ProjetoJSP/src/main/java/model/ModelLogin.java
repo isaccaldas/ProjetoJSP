@@ -56,6 +56,19 @@ public class ModelLogin implements Serializable {
 	}
 	
 	
+	//Método para verificar se o registro é novo ou se já existe
+	public boolean isNovoRegistro() {
+		
+		if (this.id == null) {
+			return true; //considera como um novo registro
+		}
+		else if (this.id != null && this.id > 0) {
+			return false;// considera como um registro existente	
+		}
+		
+     	return this.id == null;
+	}
+	
 	
 	
 }

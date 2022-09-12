@@ -20,6 +20,8 @@ public class DAOUsuarioRepository {
 	//método para cadastrar um usuário no sistema
 	public ModelLogin incluirUsuario(ModelLogin usuario) throws SQLException {
 		
+		if(usuario.isNovoRegistro()) {
+		
 		String sql = "INSERT INTO public.usuario(login, senha, nome, email) VALUES ( ?, ?, ?, ?)";
 		
 		PreparedStatement statement = conexao.prepareStatement(sql);
@@ -32,8 +34,35 @@ public class DAOUsuarioRepository {
 		statement.execute();
 		conexao.commit();
 		
+		} else {
+			EditarUsuario(usuario);
+		}
+		
 		return this.consultarUsuarioporLogin(usuario.getLogin());
-	}// fim incluirUsuario
+	
+		
+		}// fim incluirUsuario
+	
+		public ModelLogin EditarUsuario(ModelLogin usuario) throws SQLException {
+		
+		String sql = "UPDATE public.usuario SET login=?, senha=?, nome=?,  email=? WHERE id =" +usuario.getId()+";";
+		
+		PreparedStatement statement = conexao.prepareStatement(sql);
+		
+		statement.setString(1, usuario.getLogin());
+		statement.setString(2, usuario.getSenha());
+		statement.setString(3, usuario.getNome());
+		statement.setString(4, usuario.getEmail());
+	
+		statement.executeUpdate();
+		
+		conexao.commit();
+		
+		return this.consultarUsuarioporLogin(usuario.getLogin());
+	
+		}// fim EditarUsuario
+	
+	
 	
 	// Método para consultar um usuário a partir de um determinado login
 	public ModelLogin consultarUsuarioporLogin(String login) throws SQLException {
