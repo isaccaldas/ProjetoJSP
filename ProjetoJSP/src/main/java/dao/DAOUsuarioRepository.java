@@ -89,6 +89,24 @@ public class DAOUsuarioRepository {
 		
 	}//consultarUsuarioporLogin
 	
+	//Método para deletar um usuário
+	public void deletarUsuario(String idUser) throws SQLException {
+		
+		
+		String sql = "DELETE FROM public.usuario WHERE id = ?; " ;
+		
+		PreparedStatement statement = conexao.prepareStatement(sql);
+		
+		statement.setString(1, idUser);
+		
+		statement.executeUpdate();
+		
+		conexao.commit();
+		
+	}// deletarUsuario
+	
+	
+	
 	//Método para validar se um login existe
 	public boolean validarLoginExistente(String login) throws SQLException {
 		

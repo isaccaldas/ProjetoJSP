@@ -45,6 +45,8 @@
                                                     <div class="card-block">
                                                         <form id="formUser" class="form-material" action="<%=request.getContextPath()%>/ServletUsuarioController" method="post">
                                                         	
+                                                        	<input type="hidden" name="acao" id ="acao" value="">
+                                                        	
                                                               <div class="form-group form-default form-static-label">
                                                                 <input type="text" id="id" name="id" class="form-control"  readonly="readonly" value="${Usuario.id}">
                                                                 <span class="form-bar"></span>
@@ -73,7 +75,7 @@
                                                             
                                                             <button   type ="button" class="btn waves-effect waves-light btn-primary btn-square" onclick="limparForm();">Novo</button>
                                                             <button  type="submit" class="btn waves-effect waves-light btn-success btn-square">Salvar</button>
-            												<button class="btn waves-effect waves-light btn-info btn-square">Excluir</button>
+            												<button  type ="button" class="btn waves-effect waves-light btn-info btn-square" onclick="criarDelete();">Excluir</button>
                                                         
                                                         </form>
                                                         

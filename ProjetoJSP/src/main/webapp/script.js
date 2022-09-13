@@ -10,4 +10,14 @@ function limparForm() {
   		}
   			
 	}
+	
+	
+	function criarDelete(){
+		
+		 document.getElementById('formUser').method = 'get';
+		 document.getElementById('acao').value = 'deletar';
+		 document.getElementById('formUser').submit;
+		 
+		 alert("sim");
+	}
  
