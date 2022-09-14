@@ -35,6 +35,7 @@ public class ServletUsuarioController extends HttpServlet {
 				String idUser = request.getParameter("id");
 
 				daoUsuarioRepository.deletarUsuario(idUser);
+				
 				request.setAttribute("msg", "Excluído com Sucesso!");
 
 			}

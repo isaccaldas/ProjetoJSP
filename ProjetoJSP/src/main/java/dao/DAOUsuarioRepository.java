@@ -97,7 +97,7 @@ public class DAOUsuarioRepository {
 		
 		PreparedStatement statement = conexao.prepareStatement(sql);
 		
-		statement.setString(1, idUser);
+		statement.setLong(1, Long.parseLong( idUser));
 		
 		statement.executeUpdate();
 		

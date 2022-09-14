@@ -33,7 +33,7 @@
                                         </div>
                                     </div>
                                    <div class="form-group form-primary">
-                                        <input type="text" name="_login"" class="form-control" required="required">
+                                        <input type="text" name="_login" class="form-control" required="required">
                                         <span class="form-bar"></span>
                                         <label class="float-label">Informe o seu usuário.</label>
                                     </div>

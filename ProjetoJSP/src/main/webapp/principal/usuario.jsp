@@ -73,7 +73,7 @@
                                                                 <label class="float-label">Senha</label>
                                                             </div>
                                                             
-                                                            <button   type ="button" class="btn waves-effect waves-light btn-primary btn-square" onclick="limparForm();">Novo</button>
+                                                            <button   type ="button" class="btn waves-effect waves-light btn-primary btn-square" onclick="limparForm();">Limpar</button>
                                                             <button  type="submit" class="btn waves-effect waves-light btn-success btn-square">Salvar</button>
             												<button  type ="button" class="btn waves-effect waves-light btn-info btn-square" onclick="criarDelete();">Excluir</button>
                                                         
@@ -100,8 +100,11 @@
     
   <jsp:include page="javascript.jsp"></jsp:include>
   
- <script type="text/javascript" src="script.js"></script>
-<
-/body>
+ <script type="text/javascript" src="script.js">
+ 
+
+ </script>
+
+</body>
 
 </html>
