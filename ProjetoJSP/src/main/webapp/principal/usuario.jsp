@@ -75,7 +75,7 @@
                                                             
                                                             <button   type ="button" class="btn waves-effect waves-light btn-primary btn-square" onclick="limparForm();">Limpar</button>
                                                             <button  type="submit" class="btn waves-effect waves-light btn-success btn-square">Salvar</button>
-            												<button  type ="button" class="btn waves-effect waves-light btn-info btn-square" onclick="criarDelete();">Excluir</button>
+            												<button  type ="button" class="btn waves-effect waves-light btn-info btn-square" onclick="criarDeleteAjax();">Excluir</button>
                                                         
                                                         </form>
                                                         
@@ -83,7 +83,7 @@
                                                     </div>
                                                 </div> 
                                         		<div class="alert alert-danger" role="alert">
-  													<h6>${msg} </h6>
+  													<h6  id="msg">${msg} </h6>
 											</div>
                                     </div>
                                     <!-- Page-body end -->

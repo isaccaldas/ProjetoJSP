@@ -38,9 +38,21 @@ public class ServletUsuarioController extends HttpServlet {
 				
 				request.setAttribute("msg", "Excluído com Sucesso!");
 
-			}
+				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
 
-			request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+			}
+			
+			else if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("deletarAjax")) {
+
+				String idUser = request.getParameter("id");
+
+				daoUsuarioRepository.deletarUsuario(idUser);
+				
+				response.getWriter().write("Excluído com Sucesso!");
+		
+			}else {
+				request.getRequestDispatcher("principal/usuario.jsp").forward(request, response);
+			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
