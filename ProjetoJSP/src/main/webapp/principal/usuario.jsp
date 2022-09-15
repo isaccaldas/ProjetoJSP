@@ -75,9 +75,30 @@
                                                             
                                                             <button   type ="button" class="btn waves-effect waves-light btn-primary btn-square" onclick="limparForm();">Limpar</button>
                                                             <button  type="submit" class="btn waves-effect waves-light btn-success btn-square">Salvar</button>
-            												<button  type ="button" class="btn waves-effect waves-light btn-info btn-square" onclick="criarDeleteAjax();">Excluir</button>
-                                                        
-                                                        </form>
+            												<button  type ="button" class="btn waves-effect waves-light btn-info btn-square"  data-toggle="modal" data-target="#exclusaoModal" >Excluir</button>
+                                                   
+													<!-- Modal -->
+													<div class="modal fade" id="exclusaoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+														<div class="modal-dialog" role="document">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h5 class="modal-title" id="exampleModalLabel">Excluir Usuário</h5>
+																	<button type="button" class="close"
+																		data-dismiss="modal" aria-label="Close">
+																		<span aria-hidden="true">&times;</span>
+																	</button>
+																</div>
+																<div class="modal-body">Deseja realmente excluir os dados?</div>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-secondary"
+																		data-dismiss="modal">Close</button>
+																	<button type="button" class="btn btn-primary"  onclick="criarDelete();">Sim</button>
+																</div>
+															</div>
+														</div>
+													</div>
+													
+												</form>
                                                         
                                                       
                                                     </div>

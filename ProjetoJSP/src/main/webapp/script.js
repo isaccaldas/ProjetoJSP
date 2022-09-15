@@ -12,12 +12,12 @@ function limparForm() {
 
  function criarDelete() {
 	   
-	    if(confirm('Deseja realmente excluir os dados?')){
+	 //  if(confirm('Deseja realmente excluir os dados?')){
 	    
 	    document.getElementById("formUser").method = 'get';
 	    document.getElementById("acao").value = 'deletar';
 	    document.getElementById("formUser").submit();
-	    }
+	    //}
 }
 
  function criarDeleteAjax() {
