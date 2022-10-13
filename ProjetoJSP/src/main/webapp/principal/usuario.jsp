@@ -91,7 +91,7 @@
 																<div class="modal-body">Deseja realmente excluir os dados?</div>
 																<div class="modal-footer">
 																	<button type="button" class="btn btn-secondary"
-																		data-dismiss="modal">Close</button>
+																		data-dismiss="modal">Fechar</button>
 																	<button type="button" class="btn btn-primary"  onclick="criarDelete();">Sim</button>
 																</div>
 															</div>
